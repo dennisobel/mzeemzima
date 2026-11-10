@@ -1,52 +1,44 @@
-![Grid-Based News Website](./img/project%20preview.png?raw=true)
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-<h1 align="center">Grid-Based News Website</h1>
+## Getting Started
 
-<div align="center">
-
-[Live Demo](https://wiseweb-works.github.io/grid-based-news-website//)
-
-A modern, responsive newspaper-style layout using CSS Grid.
-
-</div>
-
-## About The Project
-
-The **Grid-Based News Website** is a responsive web layout designed to replicate the structure of a modern online newspaper. This project focuses on leveraging the power of **CSS Grid** to create a visually organized and user-friendly design. Developed as part of my personal portfolio, it demonstrates the use of grid-based design principles for complex layouts.
-
-### Features
-
-- Responsive, newspaper-style layout optimized for various screen sizes.
-- Utilizes **CSS Grid** for advanced layout design.
-- Clean and modern aesthetic, suitable for a news-focused website.
-
-## Built with
-
-- Next.js (App Router) + TypeScript
-- Semantic HTML5 markup
-- CSS custom properties
-- CSS Grid
-- Mobile-first workflow
-
-## Running locally
+This project uses [pnpm](https://pnpm.io). Install dependencies and start the development server:
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
-Then open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. To use another port, run `pnpm dev -p 3001`.
 
-## What I learned
+## Mock data
 
-This project provided an in-depth understanding of **CSS Grid**, including creating multi-column layouts and handling responsive design challenges. It also reinforced the importance of semantic HTML in organizing complex content structures.
+The blog currently runs without a database:
 
-## Useful resources
+- Posts, categories, authors and comments are defined in `src/data/mockData.js`.
+- `src/utils/mockDb.js` serves them from memory to the pages and the API routes in `src/app/api`. Posts and comments created while the server runs are lost on restart. Restart `pnpm dev` after editing the mock data.
+- Post covers are the photos in `public/`, and author avatars are in `public/mock/avatars/`.
+- `prisma/schema.prisma` isn't used at runtime. It describes the data model the mock records follow.
 
-1. [CSS Tricks: Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/) - Helped me master CSS Grid techniques.
-2. [Responsive Design Principles](https://web.dev/responsive-web-design-basics/) - A practical guide for building layouts that work on any device.
-3. [MDN Web Docs on Grid Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout) - A comprehensive reference for CSS Grid features.
+To move to a real backend, reimplement the functions exported by `src/utils/mockDb.js`.
 
-## Acknowledgments
+## Environment variables
 
-This project is a custom design and implementation for my portfolio. Feedback is always welcome and appreciated to help me refine my skills further!
+Copy `.env.example` to `.env.local`. Nothing is required to browse the blog locally. Signing in needs Google or GitHub OAuth credentials, and image uploads on the Write page need a Firebase project.
+
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
