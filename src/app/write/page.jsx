@@ -7,7 +7,11 @@ import "react-quill/dist/quill.bubble.css";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { uploadImage } from "@/utils/mockUpload";
-import ReactQuill from "react-quill";
+import dynamic from "next/dynamic";
+
+// Quill uses `document` as soon as it loads, so the editor can only be loaded
+// in the browser. Importing it normally breaks the production build.
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const WritePage = () => {
   const { status } = useSession();

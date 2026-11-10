@@ -30,6 +30,18 @@ Copy `.env.example` to `.env.local`. Keep `NEXTAUTH_URL` set to the address you 
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Deploying to Netlify
+
+`netlify.toml` configures the build, and Netlify applies its Next.js adapter automatically.
+
+1. Import the repository into Netlify, and make sure the site's production branch is the one with this code.
+2. In **Site configuration → Environment variables**, add these with a scope that includes **Functions**:
+   - `NEXTAUTH_SECRET`: a long random string, for example from `openssl rand -base64 32`.
+   - `AUTH_TRUST_HOST`: `true`. This makes sign-in use the site's own URL, including on deploy previews.
+3. Deploy.
+
+The site still runs on mock data. On Netlify, pages are rendered by serverless functions, so posts and comments created on the live site only live in the memory of whichever function instance handled them. They can disappear at any time, and visitors may not see each other's posts. The seed posts always show. The demo login lets anyone sign in, which is fine for a demo but must be removed before using real data.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
