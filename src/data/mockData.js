@@ -2,6 +2,9 @@
 // Each record has the same fields as the matching model in prisma/schema.prisma.
 // The data is loaded once per server process: restart `pnpm dev` after editing.
 
+// The account the login page's "demo account" button signs in as.
+export const DEMO_USER_EMAIL = "demo@example.com";
+
 export const categories = [
   { id: "cat_style", slug: "style", title: "Style", img: "/style.png" },
   { id: "cat_fashion", slug: "fashion", title: "Fashion", img: "/fashion.png" },
@@ -39,6 +42,13 @@ export const users = [
     email: "kenji@example.com",
     emailVerified: null,
     image: "/mock/avatars/kenji.svg",
+  },
+  {
+    id: "user_demo",
+    name: "Demo Writer",
+    email: DEMO_USER_EMAIL,
+    emailVerified: null,
+    image: "/mock/avatars/demo.svg",
   },
 ];
 

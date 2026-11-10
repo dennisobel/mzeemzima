@@ -4,7 +4,13 @@
 // prisma/schema.prisma, so a real data layer can replace this module later
 // without changing the pages, components or API routes that call it.
 // New posts, comments and view counts last until the server restarts.
-import { categories, users, posts, comments } from "../data/mockData.js";
+import {
+  categories,
+  users,
+  posts,
+  comments,
+  DEMO_USER_EMAIL,
+} from "../data/mockData.js";
 
 // Next.js bundles pages and API routes separately. Keeping the store on
 // globalThis gives them all the same copy within one server process.
@@ -30,6 +36,9 @@ const requireString = (value, field) => {
 };
 
 export const getCategories = () => copy(db.categories);
+
+// The account behind the login page's demo button (see src/utils/auth.js).
+export const getDemoUser = () => copy(findUser(DEMO_USER_EMAIL));
 
 // Newest first, with the total matching count for pagination.
 export const getPosts = ({ page = 1, cat, perPage }) => {
